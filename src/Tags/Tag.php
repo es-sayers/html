@@ -6,7 +6,7 @@ use Esayers\Html\RenderableInterface;
 use Esayers\Html\Tags\AbstractTag;
 
 /**
- * Implements HTML tags that are not self closing
+ * Implements normal HTML tags
  */
 class Tag extends AbstractTag
 {
@@ -45,7 +45,7 @@ class Tag extends AbstractTag
      * @param \Esayers\Html\RenderableInterface $child
      * @return $this
      */
-    public function addChild(RenderableInterface $child): Tag
+    public function child(RenderableInterface $child): Tag
     {
         array_push($this->children, $child);
         return $this;
@@ -56,7 +56,7 @@ class Tag extends AbstractTag
      * @param \Esayers\Html\RenderableInterface[] $children
      * @return $this
      */
-    public function addChildren(array $children): Tag
+    public function children(array $children): Tag
     {
         $this->children = array_merge($this->children, $children);
         return $this;
@@ -65,7 +65,7 @@ class Tag extends AbstractTag
     /**
      * @return \Esayers\Html\RenderableInterface[] $children
      */
-    public function children(): array
+    public function getChildren(): array
     {
         return $this->children;
     }

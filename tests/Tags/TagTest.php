@@ -29,7 +29,7 @@ class TagTest extends TestCase
     {
         $tag = new Tag('div');
 
-        $this->assertEquals([], $tag->children());
+        $this->assertEquals([], $tag->getChildren());
     }
 
     #[Test]
@@ -38,7 +38,7 @@ class TagTest extends TestCase
         $child = new Tag('p');
         $tag = new Tag('div', [$child]);
 
-        $this->assertEquals([$child], $tag->children());
+        $this->assertEquals([$child], $tag->getChildren());
     }
 
     #[Test]
@@ -47,10 +47,10 @@ class TagTest extends TestCase
         $child1 = new Tag('p');
         $child2 = new Tag('p');
         $tag = new Tag('div');
-        $tag->addChild($child1);
-        $tag->addChild($child2);
+        $tag->child($child1);
+        $tag->child($child2);
 
-        $this->assertEquals([$child1, $child2], $tag->children());
+        $this->assertEquals([$child1, $child2], $tag->getChildren());
     }
 
     #[Test]
@@ -59,8 +59,8 @@ class TagTest extends TestCase
         $child1 = new Tag('p');
         $child2 = new Tag('p');
         $tag = new Tag('div');
-        $tag->addChildren([$child1, $child2]);
+        $tag->children([$child1, $child2]);
 
-        $this->assertEquals([$child1, $child2], $tag->children());
+        $this->assertEquals([$child1, $child2], $tag->getChildren());
     }
 }
