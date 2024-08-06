@@ -25,7 +25,7 @@ class TagTest extends TestCase
     }
 
     #[Test]
-    public function testChildren()
+    public function testGetChildren()
     {
         $tag = new Tag('div');
 
