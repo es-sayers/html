@@ -1,6 +1,7 @@
 {
     "name": "esayers/html",
-    "description": "Generate HTML and create reusable components",
+    "version": "1.0.0",
+    "description": "Generate HTML through PHP",
     "type": "project",
     "license": "MIT",
     "require-dev": {
