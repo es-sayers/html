@@ -26,6 +26,8 @@ class Html
         if (in_array($name, self::TAGS)) {
             $children = isset($arguments[0]) ? self::getChildrenFromArgument($arguments[0]) : [];
             return new Tag($name, $children);
+            $attributes = isset($arguments[1]) ? self::getChildrenFromArgument($arguments[1]) : [];
+            return new Tag($name, $children, $attributes);
         }
         return null;
     }

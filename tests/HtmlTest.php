@@ -43,6 +43,13 @@ class HtmlTest extends TestCase
     }
 
     #[Test]
+    public function testCreateVoidTagWithAttributes()
+    {
+        $tag = Html::br(['color' => 'red']);
+        $this->assertEquals('<br color="red"/>', $tag->render());
+    }
+
+    #[Test]
     public function testText()
     {
         $text = Html::text('Test');
