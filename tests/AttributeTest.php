@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass('Html')]
+#[CoversClass('Attribute')]
 class AttributeTest extends TestCase
 {
     #[DataProvider('renderAttributesProvider')]
