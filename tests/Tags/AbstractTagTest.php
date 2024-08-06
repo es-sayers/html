@@ -20,6 +20,12 @@ class AbstractTagTest extends TestCase
     }
 
     #[Test]
+    public function testConstructAndGetName()
+    {
+        $this->assertEquals('div', $this->stub->getName());
+    }
+
+    #[Test]
     public function testConstructAndGetAttributes()
     {
         $this->assertEquals(['id' => '2'], $this->stub->getAttributes());
