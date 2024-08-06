@@ -16,4 +16,22 @@ class VoidTagTest extends TestCase
         $tag = new VoidTag('br');
         $this->assertEquals('<br/>', $tag->render());
     }
+
+    #[Test]
+    public function testConstructWithAttributes()
+    {
+        $attributes = [
+            'class' => ['class1', 'class2'],
+            'id' => '2'
+        ];
+        $tag = new VoidTag('br', $attributes);
+        $this->assertEquals($attributes, $tag->getAttributes());
+    }
+
+    #[Test]
+    public function testRenderWithAttributes()
+    {
+        $tag = new VoidTag('br', ['id' => '2']);
+        $this->assertEquals('<br id="2"/>', $tag->render());
+    }
 }

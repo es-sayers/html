@@ -2,6 +2,7 @@
 
 namespace Esayers\Html\Tags;
 
+use Esayers\Html\Attribute;
 use Esayers\Html\Tags\AbstractTag;
 
 /**
@@ -15,6 +16,6 @@ class VoidTag extends AbstractTag
      */
     public function render(): string
     {
-        return '<' . $this->name . '/>';
+        return '<' . $this->name . Attribute::renderAttributes($this->attributes) . '/>';
     }
 }

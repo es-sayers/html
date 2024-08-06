@@ -63,4 +63,22 @@ class TagTest extends TestCase
 
         $this->assertEquals([$child1, $child2], $tag->getChildren());
     }
+
+    #[Test]
+    public function testConstructWithAttributes()
+    {
+        $attributes = [
+            'class' => ['class1', 'class2'],
+            'id' => '2'
+        ];
+        $tag = new Tag('div', [], $attributes);
+        $this->assertEquals($attributes, $tag->getAttributes());
+    }
+
+    #[Test]
+    public function testRenderWithAttributes()
+    {
+        $tag = new Tag('div', [], ['id' => '2']);
+        $this->assertEquals('<div id="2"></div>', $tag->render());
+    }
 }
