@@ -3,8 +3,10 @@
 namespace Esayers\Tests;
 
 use Esayers\Html\Html;
+use Esayers\Html\Tags\VoidTag;
 use Esayers\Html\Text;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -30,7 +32,7 @@ class HtmlTest extends TestCase
     {
         $child = Html::p();
         $tag = Html::div($child);
-        $this->assertEquals($child, $tag->children());
+        $this->assertEquals([$child], $tag->getChildren());
     }
 
     #[Test]
@@ -39,13 +41,55 @@ class HtmlTest extends TestCase
         $child1 = Html::p();
         $child2 = Html::span();
         $tag = Html::div([$child1, $child2]);
-        $this->assertEquals([$child1, $child2], $tag->children());
+        $this->assertEquals([$child1, $child2], $tag->getChildren());
     }
 
+    #[Test]
+    public function testCreateTagWithAttributes()
+    {
+        $tag = Html::div([], ['color' => 'red']);
+        $this->assertEquals('<div color="red"></div>', $tag->render());
+    }
+
+    #[Test]
+    public function testCreateVoidTagWithAttributes()
+    {
+        $tag = Html::br(['color' => 'red']);
+        $this->assertEquals('<br color="red"/>', $tag->render());
+    }
+
+    #[Test]
     public function testText()
     {
         $text = Html::text('Test');
         $this->assertInstanceOf(Text::class, $text);
         $this->assertEquals('Test', $text->render());
+    }
+
+    #[DataProvider('voidTagProvider')]
+    public function testVoidTag($tag)
+    {
+        $br = Html::$tag();
+        $this->assertInstanceOf(VoidTag::class, $br);
+    }
+
+    public static function voidTagProvider()
+    {
+        return [
+            ['area'],
+            ['base'],
+            ['br'],
+            ['col'],
+            ['embed'],
+            ['hr'],
+            ['img'],
+            ['input'],
+            ['link'],
+            ['meta'],
+            ['param'],
+            ['source'],
+            ['track'],
+            ['wbr']
+        ];
     }
 }

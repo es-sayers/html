@@ -3,10 +3,11 @@
 namespace Esayers\Html\Tags;
 
 use Esayers\Html\RenderableInterface;
+use Esayers\Html\Attribute;
 use Esayers\Html\Tags\AbstractTag;
 
 /**
- * Implements HTML tags that are not self closing
+ * Implements normal HTML tags
  */
 class Tag extends AbstractTag
 {
@@ -18,12 +19,13 @@ class Tag extends AbstractTag
 
     /**
      * @param string $name HTML Tag name
-     * @param \Esayers\Html\RenderableInterface[] $children (optional) Children
+     * @param \Esayers\Html\RenderableInterface[] $children (optional)
+     * @param array $attributes (optional) HTML attributes
      */
-    public function __construct(string $name, array $children = [])
+    public function __construct(string $name, array $children = [], array $attributes = [])
     {
         $this->children = $children;
-        parent::__construct($name);
+        parent::__construct($name, $attributes);
     }
 
     /**
@@ -32,7 +34,7 @@ class Tag extends AbstractTag
      */
     public function render(): string
     {
-        $str = '<' . $this->name . '>';
+        $str = '<' . $this->name . Attribute::renderAttributes($this->attributes) .  '>';
         foreach ($this->children as $child) {
             $str .= $child->render();
         }
@@ -45,7 +47,7 @@ class Tag extends AbstractTag
      * @param \Esayers\Html\RenderableInterface $child
      * @return $this
      */
-    public function addChild(RenderableInterface $child): Tag
+    public function child(RenderableInterface $child): Tag
     {
         array_push($this->children, $child);
         return $this;
@@ -56,7 +58,7 @@ class Tag extends AbstractTag
      * @param \Esayers\Html\RenderableInterface[] $children
      * @return $this
      */
-    public function addChildren(array $children): Tag
+    public function children(array $children): Tag
     {
         $this->children = array_merge($this->children, $children);
         return $this;
@@ -65,7 +67,7 @@ class Tag extends AbstractTag
     /**
      * @return \Esayers\Html\RenderableInterface[] $children
      */
-    public function children(): array
+    public function getChildren(): array
     {
         return $this->children;
     }
