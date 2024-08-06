@@ -2,6 +2,7 @@
     "name": "esayers/html",
     "description": "Generate HTML and create reusable components",
     "type": "project",
+    "license": "MIT",
     "require-dev": {
         "phpunit/phpunit": "^11.3"
     },
@@ -12,7 +13,7 @@
     },
     "authors": [
         {
-            "name": "es-sayers",
+            "name": "Ethan Sayers",
             "email": "esayers.cs@gmail.com"
         }
     ],
