@@ -46,7 +46,7 @@ class Html
      * @param \Esayers\Html\RenderableInterface|\Esayers\Html\RenderableInterface[] $arg
      * @return \Esayers\Html\RenderableInterface[]
      */
-    private static function getChildrenFromArgument($arg): array
+    private static function getChildrenFromArgument(mixed $arg): array
     {
         $children = [];
         if (is_array($arg)) {
