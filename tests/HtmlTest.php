@@ -3,8 +3,10 @@
 namespace Esayers\Tests;
 
 use Esayers\Html\Html;
+use Esayers\Html\Tags\VoidTag;
 use Esayers\Html\Text;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -43,6 +45,13 @@ class HtmlTest extends TestCase
     }
 
     #[Test]
+    public function testCreateTagWithAttributes()
+    {
+        $tag = Html::div([], ['color' => 'red']);
+        $this->assertEquals('<div color="red"></div>', $tag->render());
+    }
+
+    #[Test]
     public function testCreateVoidTagWithAttributes()
     {
         $tag = Html::br(['color' => 'red']);
@@ -55,5 +64,32 @@ class HtmlTest extends TestCase
         $text = Html::text('Test');
         $this->assertInstanceOf(Text::class, $text);
         $this->assertEquals('Test', $text->render());
+    }
+
+    #[DataProvider('voidTagProvider')]
+    public function testVoidTag($tag)
+    {
+        $br = Html::$tag();
+        $this->assertInstanceOf(VoidTag::class, $br);
+    }
+
+    public static function voidTagProvider()
+    {
+        return [
+            ['area'],
+            ['base'],
+            ['br'],
+            ['col'],
+            ['embed'],
+            ['hr'],
+            ['img'],
+            ['input'],
+            ['link'],
+            ['meta'],
+            ['param'],
+            ['source'],
+            ['track'],
+            ['wbr']
+        ];
     }
 }
