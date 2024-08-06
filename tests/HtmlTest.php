@@ -42,6 +42,7 @@ class HtmlTest extends TestCase
         $this->assertEquals([$child1, $child2], $tag->getChildren());
     }
 
+    #[Test]
     public function testText()
     {
         $text = Html::text('Test');
