@@ -17,7 +17,7 @@ class Collection
     /**
      * @return array
      */
-    public function getCollection(): array
+    public function toArray(): array
     {
         return $this->array;
     }

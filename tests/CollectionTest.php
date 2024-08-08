@@ -23,7 +23,7 @@ class CollectionTest extends TestCase
     #[Test]
     public function testConstructAndGet()
     {
-        $this->assertEquals($this->defaultCollection, $this->collection->getCollection());
+        $this->assertEquals($this->defaultCollection, $this->collection->toArray());
     }
 
     #[Test]
@@ -36,7 +36,7 @@ class CollectionTest extends TestCase
     public function testConstructRemovesArrayKeys()
     {
         $obj = new Collection(['first' => 1, 'second' => 2]);
-        $this->assertEquals([1, 2], $obj->getCollection());
+        $this->assertEquals([1, 2], $obj->toArray());
     }
 
     #[Test]
@@ -44,7 +44,7 @@ class CollectionTest extends TestCase
     {
         $obj = new Collection([3, 4]);
         $obj->setCollection([1, 2]);
-        $this->assertEquals([1, 2], $obj->getCollection());
+        $this->assertEquals([1, 2], $obj->toArray());
     }
 
     #[Test]
@@ -52,7 +52,7 @@ class CollectionTest extends TestCase
     {
         $obj = new Collection([3, 4]);
         $obj->setCollection(['first' => 1, 'second' => 2]);
-        $this->assertEquals([1, 2], $obj->getCollection());
+        $this->assertEquals([1, 2], $obj->toArray());
     }
 
 
@@ -67,7 +67,7 @@ class CollectionTest extends TestCase
         $this->collection->removeAt(1);
         $this->assertEquals(
             [1, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -77,7 +77,7 @@ class CollectionTest extends TestCase
         $this->collection->removeAll();
         $this->assertEquals(
             [],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -87,7 +87,7 @@ class CollectionTest extends TestCase
         $this->collection->removeFirst();
         $this->assertEquals(
             [2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -97,7 +97,7 @@ class CollectionTest extends TestCase
         $this->collection->removeLast();
         $this->assertEquals(
             [1, 2, 3],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -113,7 +113,7 @@ class CollectionTest extends TestCase
         $this->collection->insertAt($value, 1);
         $this->assertEquals(
             [1, $value, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -124,7 +124,7 @@ class CollectionTest extends TestCase
         $this->collection->insertFirst($value);
         $this->assertEquals(
             [$value, 1, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -134,7 +134,7 @@ class CollectionTest extends TestCase
         $this->collection->prepend($value);
         $this->assertEquals(
             [$value, 1, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -144,7 +144,7 @@ class CollectionTest extends TestCase
         $this->collection->insertLast($value);
         $this->assertEquals(
             [1, 2, 3, 4, $value],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -154,7 +154,7 @@ class CollectionTest extends TestCase
         $this->collection->append($value);
         $this->assertEquals(
             [1, 2, 3, 4, $value],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -171,7 +171,7 @@ class CollectionTest extends TestCase
         $this->collection->insertAllAt($value, 1);
         $this->assertEquals(
             [1, $expected[0], $expected[1], 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -183,7 +183,7 @@ class CollectionTest extends TestCase
         $this->collection->insertAllFirst($value);
         $this->assertEquals(
             [$expected[0], $expected[1], 1, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -194,7 +194,7 @@ class CollectionTest extends TestCase
         $this->collection->prependAll($value);
         $this->assertEquals(
             [$expected[0], $expected[1], 1, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -205,7 +205,7 @@ class CollectionTest extends TestCase
         $this->collection->insertAllLast($value);
         $this->assertEquals(
             [1, 2, 3, 4, $expected[0], $expected[1]],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -216,7 +216,7 @@ class CollectionTest extends TestCase
         $this->collection->appendAll($value);
         $this->assertEquals(
             [1, 2, 3, 4, $expected[0], $expected[1]],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -244,7 +244,7 @@ class CollectionTest extends TestCase
         $this->collection->replaceAt($value, 1);
         $this->assertEquals(
             [1, $value, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -254,7 +254,7 @@ class CollectionTest extends TestCase
         $this->collection->replaceFirst($value);
         $this->assertEquals(
             [$value, 2, 3, 4],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
@@ -264,7 +264,7 @@ class CollectionTest extends TestCase
         $this->collection->replaceLast($value);
         $this->assertEquals(
             [1, 2, 3, $value],
-            $this->collection->getCollection()
+            $this->collection->toArray()
         );
     }
 
