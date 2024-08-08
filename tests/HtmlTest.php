@@ -32,7 +32,7 @@ class HtmlTest extends TestCase
     {
         $child = Html::p();
         $tag = Html::div($child);
-        $this->assertEquals([$child], $tag->getChildren());
+        $this->assertEquals([$child], $tag->children()->toArray());
     }
 
     #[Test]
@@ -41,7 +41,7 @@ class HtmlTest extends TestCase
         $child1 = Html::p();
         $child2 = Html::span();
         $tag = Html::div([$child1, $child2]);
-        $this->assertEquals([$child1, $child2], $tag->getChildren());
+        $this->assertEquals([$child1, $child2], $tag->children()->toArray());
     }
 
     #[Test]
