@@ -1,6 +1,6 @@
 <?php
 
-namespace Esayers\Tests\Tags;
+namespace Esayers\Html\Tests\Tags;
 
 use Esayers\Html\Tags\AbstractTag;
 use PHPUnit\Framework\TestCase;

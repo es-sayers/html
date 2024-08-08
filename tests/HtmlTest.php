@@ -1,6 +1,6 @@
 <?php
 
-namespace Esayers\Tests;
+namespace Esayers\Html\Tests;
 
 use Esayers\Html\Html;
 use Esayers\Html\Tags\VoidTag;
