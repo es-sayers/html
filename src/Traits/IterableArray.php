@@ -13,10 +13,10 @@ trait IterableArray
     protected int $iteratorPos = 0;
 
     /**
-     * Get reference to the array that should be iterable
+     * Get array that should be iterable
      * @return array
      */
-    abstract protected function &getIterableArray(): array;
+    abstract protected function getIterableArray(): array;
 
     /**
      * @inheritDoc
@@ -24,7 +24,7 @@ trait IterableArray
      */
     public function current(): mixed
     {
-        return $this-> getIterableArray()[$this->iteratorPos];
+        return $this->getIterableArray()[$this->iteratorPos];
     }
 
     /**
@@ -60,6 +60,6 @@ trait IterableArray
      */
     public function valid(): bool
     {
-        return isset($this->getIterableArray[$this->iteratorPos]);
+        return isset($this->getIterableArray()[$this->iteratorPos]);
     }
 }

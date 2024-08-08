@@ -28,7 +28,7 @@ class Collection implements \Iterator
      * @inheritDoc
      * @return array
      */
-    private function &getIterableArray(): array
+    private function getIterableArray(): array
     {
         return $this->array;
     }
