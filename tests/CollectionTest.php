@@ -55,6 +55,12 @@ class CollectionTest extends TestCase
         $this->assertEquals([1, 2], $obj->toArray());
     }
 
+    #[Test]
+    public function testCollectionIterable()
+    {
+        $this->assertIsIterable($this->collection);
+    }
+
 
     /**
      *

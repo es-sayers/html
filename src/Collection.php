@@ -2,16 +2,35 @@
 
 namespace Esayers\Html;
 
+use Esayers\Html\Traits\IterableArray;
+
 /**
  * Stores a collection of data in an indexed array. Provides array abstraction.
  */
-class Collection
+class Collection implements \Iterator
 {
-    private array $array;
+    use IterableArray;
 
+    /**
+     * @var array Holds collection data
+     */
+    private array $array = [];
+
+    /**
+     * @param array $array Collection data, array keys will be lost
+     */
     public function __construct(array $array)
     {
         $this->array = array_values($array);
+    }
+
+    /**
+     * @inheritDoc
+     * @return array
+     */
+    private function &getIterableArray(): array
+    {
+        return $this->array;
     }
 
     /**
@@ -127,13 +146,13 @@ class Collection
 
     /**
      * Alias for { @see Arr::insertLast() }
+     *
      * @param mixed $element
      * @return $this
      */
-    public function append(mixed $element): Collection
+    public function append(mixed $element): void
     {
         $this->insertLast($element);
-        return $this;
     }
 
     /**
