@@ -1,14 +1,14 @@
 <?php
 
-namespace Esayers\Html;
+namespace Esayers\Html\Traits;
 
 /**
  * Describes objects that should be rendered with encoding by default.
- *
- * This should be used for almost all render cases.
  */
-abstract class AbstractEncodedRenderable extends AbstractRenderable
+trait EncodedRenderable
 {
+    use Renderable;
+
     protected function preRender(string $renderString): string
     {
         return htmlspecialchars($this->renderString());

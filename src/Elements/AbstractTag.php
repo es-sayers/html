@@ -2,10 +2,12 @@
 
 namespace Esayers\Html\Elements;
 
-use Esayers\Html\AbstractRenderable;
+use Esayers\Html\Traits\Renderable;
 
-abstract class AbstractTag extends AbstractRenderable
+abstract class AbstractTag
 {
+    use Renderable;
+
     /**
      * HTML Tag Name
      * @var string

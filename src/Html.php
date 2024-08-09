@@ -43,9 +43,9 @@ class Html
     }
 
     /**
-     * Wraps argument passed as \Esayers\Html\AbstractRenderable into an array
-     * @param \Esayers\Html\AbstractRenderable|\Esayers\Html\AbstractRenderable[] $arg
-     * @return \Esayers\Html\AbstractRenderable[]
+     * Wraps argument passed as \Esayers\Html\Traits\Renderable into an array
+     * @param \Esayers\Html\Traits\Renderable|\Esayers\Html\Traits\Renderable[] $arg
+     * @return \Esayers\Html\Traits\Renderable[]
      */
     private static function getChildrenFromArgument(mixed $arg): array
     {

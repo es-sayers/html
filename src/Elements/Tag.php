@@ -3,7 +3,7 @@
 namespace Esayers\Html\Elements;
 
 use Esayers\Html\Attribute;
-use Esayers\Html\Collection;
+use Esayers\Html\Elements\RenderableCollection;
 use Esayers\Html\Elements\AbstractTag;
 
 /**
@@ -12,25 +12,25 @@ use Esayers\Html\Elements\AbstractTag;
 class Tag extends AbstractTag
 {
     /**
-     * @var \Esayers\Html\Collection Children to be rendered inside of this tag
+     * @var \Esayers\Html\Elements\RenderableCollection Children to be rendered inside of this tag
      */
-    protected Collection $children;
+    protected RenderableCollection $children;
 
     /**
      * @param string $name HTML Tag name
-     * @param \Esayers\Html\AbstractRenderable[] $children (optional)
+     * @param \Esayers\Html\Traits\Renderable[] $children (optional)
      * @param array $attributes (optional) HTML attributes
      */
     public function __construct(string $name, array $children = [], array $attributes = [])
     {
-        $this->children = new Collection($children);
+        $this->children = new RenderableCollection($children);
         parent::__construct($name, $attributes);
     }
 
     /**
-     * @return Collection $children
+     * @return \Esayers\Html\Elements\RenderableCollection $children
      */
-    public function children(): Collection
+    public function children(): RenderableCollection
     {
         return $this->children;
     }

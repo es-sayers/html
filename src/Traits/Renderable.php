@@ -1,10 +1,10 @@
 <?php
 
-namespace Esayers\Html;
+namespace Esayers\Html\Traits;
 
 use ValueError;
 
-abstract class AbstractRenderable
+trait Renderable
 {
     /**
      * Returns string to be rendered
@@ -36,7 +36,7 @@ abstract class AbstractRenderable
     /**
      * Performs validation before rendering
      *
-     * @throws ValueError when $renderString contains a character in { @see AbstractRenderable::illegalRenderChars() }
+     * @throws ValueError when $renderString contains a character in { @see Renderable::illegalRenderChars() }
      * @return true when all validation passed
      */
     private function validate(string $renderString): true
