@@ -14,7 +14,7 @@ class Collection implements \Iterator
     /**
      * @var array Holds collection data
      */
-    private array $array = [];
+    protected array $array = [];
 
     /**
      * @param array $array Collection data, array keys will be lost
