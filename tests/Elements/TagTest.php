@@ -1,8 +1,8 @@
 <?php
 
-namespace Esayers\Html\Tests\Tags;
+namespace Esayers\Html\Tests\Elements;
 
-use Esayers\Html\Tags\Tag;
+use Esayers\Html\Elements\Tag;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

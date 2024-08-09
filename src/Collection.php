@@ -14,12 +14,12 @@ class Collection implements \Iterator
     /**
      * @var array Holds collection data
      */
-    private array $array = [];
+    protected array $array = [];
 
     /**
      * @param array $array Collection data, array keys will be lost
      */
-    public function __construct(array $array)
+    public function __construct(array $array = [])
     {
         $this->array = array_values($array);
     }
@@ -28,7 +28,7 @@ class Collection implements \Iterator
      * @inheritDoc
      * @return array
      */
-    private function getIterableArray(): array
+    protected function getIterableArray(): array
     {
         return $this->array;
     }
@@ -100,6 +100,16 @@ class Collection implements \Iterator
     }
 
     /**
+     * Called before insertAt()
+     * @param mixed $element Element to be inserted
+     * @return string
+     */
+    protected function beforeInsert(mixed $element): mixed
+    {
+        return $element;
+    }
+
+    /**
      * Insert element at index
      * @param mixed $element
      * @param int $index
@@ -107,6 +117,7 @@ class Collection implements \Iterator
      */
     public function insertAt(mixed $element, int $index): Collection
     {
+        $element = $this->beforeInsert($element);
         array_splice($this->array, $index, 0, [$element]);
         return $this;
     }
@@ -116,20 +127,9 @@ class Collection implements \Iterator
      * @param mixed $element
      * @return $this
      */
-    public function insertFirst(mixed $element): Collection
-    {
-        $this->insertAt($element, 0);
-        return $this;
-    }
-
-    /**
-     * Alias for { @see Arr::insertFirst() }
-     * @param mixed $element
-     * @return $this
-     */
     public function prepend(mixed $element): Collection
     {
-        $this->insertFirst($element);
+        $this->insertAt($element, 0);
         return $this;
     }
 
@@ -138,21 +138,10 @@ class Collection implements \Iterator
      * @param mixed $element
      * @return $this
      */
-    public function insertLast(mixed $element): Collection
+    public function append(mixed $element): Collection
     {
-        array_push($this->array, $element);
+        $this->insertAt($element, count($this->array));
         return $this;
-    }
-
-    /**
-     * Alias for { @see Arr::insertLast() }
-     *
-     * @param mixed $element
-     * @return $this
-     */
-    public function append(mixed $element): void
-    {
-        $this->insertLast($element);
     }
 
     /**
@@ -163,7 +152,10 @@ class Collection implements \Iterator
      */
     public function insertAllAt(array $elements, int $index): Collection
     {
-        array_splice($this->array, $index, 0, $elements);
+        foreach ($elements as $element) {
+            $this->insertAt($element, $index);
+            $index++;
+        }
         return $this;
     }
 
@@ -172,20 +164,9 @@ class Collection implements \Iterator
      * @param array $element
      * @return $this
      */
-    public function insertAllFirst(array $elements): Collection
-    {
-        $this->insertAllAt($elements, 0);
-        return $this;
-    }
-
-    /**
-     * Alias for { @see Arr::insertAllFirst() }
-     * @param mixed $element
-     * @return $this
-     */
     public function prependAll(array $elements): Collection
     {
-        $this->insertAllFirst($elements);
+        $this->insertAllAt($elements, 0);
         return $this;
     }
 
@@ -194,23 +175,20 @@ class Collection implements \Iterator
      * @param array $element
      * @return $this
      */
-    public function insertAllLast(array $elements): Collection
+    public function appendAll(array $elements): Collection
     {
-        foreach ($elements as $element) {
-            array_push($this->array, $element);
-        }
+        $this->insertAllAt($elements, count($this->array));
         return $this;
     }
 
     /**
-     * Alias for { @see Arr::insertAllLast() }
-     * @param array $element
-     * @return $this
+     * Called before replaceAt()
+     * @param mixed $element Element to be inserted
+     * @return string
      */
-    public function appendAll(array $elements): Collection
+    public function beforeReplace(mixed $element): mixed
     {
-        $this->insertAllLast($elements);
-        return $this;
+        return $element;
     }
 
     /**
@@ -221,7 +199,8 @@ class Collection implements \Iterator
      */
     public function replaceAt(mixed $replacement, int $index): Collection
     {
-        array_splice($this->array, $index, 1, [$replacement]);
+        $replacement = $this->beforeReplace($replacement);
+        $this->array[$index] = $replacement;
         return $this;
     }
 
@@ -233,7 +212,7 @@ class Collection implements \Iterator
      */
     public function replaceFirst(mixed $replacement): Collection
     {
-        array_splice($this->array, 0, 1, [$replacement]);
+        $this->replaceAt($replacement, 0);
         return $this;
     }
 
@@ -245,8 +224,7 @@ class Collection implements \Iterator
      */
     public function replaceLast(mixed $replacement): Collection
     {
-        array_splice($this->array, count($this->array) - 1, 1);
-        array_push($this->array, $replacement);
+        $this->replaceAt($replacement, count($this->array) - 1);
         return $this;
     }
 }

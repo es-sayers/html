@@ -123,19 +123,8 @@ class CollectionTest extends TestCase
         );
     }
 
-
     #[DataProvider('valuesProvider')]
-    public function testInsertFirst(mixed $value)
-    {
-        $this->collection->insertFirst($value);
-        $this->assertEquals(
-            [$value, 1, 2, 3, 4],
-            $this->collection->toArray()
-        );
-    }
-
-    #[DataProvider('valuesProvider')]
-    public function testPrependAlias(mixed $value)
+    public function testPrepend(mixed $value)
     {
         $this->collection->prepend($value);
         $this->assertEquals(
@@ -145,17 +134,7 @@ class CollectionTest extends TestCase
     }
 
     #[DataProvider('valuesProvider')]
-    public function testInsertLast(mixed $value)
-    {
-        $this->collection->insertLast($value);
-        $this->assertEquals(
-            [1, 2, 3, 4, $value],
-            $this->collection->toArray()
-        );
-    }
-
-    #[DataProvider('valuesProvider')]
-    public function testAppendAlias(mixed $value)
+    public function testAppend(mixed $value)
     {
         $this->collection->append($value);
         $this->assertEquals(
@@ -181,20 +160,8 @@ class CollectionTest extends TestCase
         );
     }
 
-
      #[DataProvider('arrayValuesProvider')]
-    public function testInsertAllFirst(array $value)
-    {
-        $expected = array_values($value);
-        $this->collection->insertAllFirst($value);
-        $this->assertEquals(
-            [$expected[0], $expected[1], 1, 2, 3, 4],
-            $this->collection->toArray()
-        );
-    }
-
-     #[DataProvider('arrayValuesProvider')]
-    public function testPrependAllAlias(array $value)
+    public function testPrependAll(array $value)
     {
         $expected = array_values($value);
         $this->collection->prependAll($value);
@@ -205,18 +172,7 @@ class CollectionTest extends TestCase
     }
 
      #[DataProvider('arrayValuesProvider')]
-    public function testInsertAllLast(array $value)
-    {
-        $expected = array_values($value);
-        $this->collection->insertAllLast($value);
-        $this->assertEquals(
-            [1, 2, 3, 4, $expected[0], $expected[1]],
-            $this->collection->toArray()
-        );
-    }
-
-     #[DataProvider('arrayValuesProvider')]
-    public function testAppendAllAlias(array $value)
+    public function testAppendAll(array $value)
     {
         $expected = array_values($value);
         $this->collection->appendAll($value);

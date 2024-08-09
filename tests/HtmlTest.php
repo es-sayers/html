@@ -3,8 +3,7 @@
 namespace Esayers\Html\Tests;
 
 use Esayers\Html\Html;
-use Esayers\Html\Tags\VoidTag;
-use Esayers\Html\Text;
+use Esayers\Html\Elements\VoidTag;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -56,14 +55,6 @@ class HtmlTest extends TestCase
     {
         $tag = Html::br(['color' => 'red']);
         $this->assertEquals('<br color="red"/>', $tag->render());
-    }
-
-    #[Test]
-    public function testText()
-    {
-        $text = Html::text('Test');
-        $this->assertInstanceOf(Text::class, $text);
-        $this->assertEquals('Test', $text->render());
     }
 
     #[DataProvider('voidTagProvider')]

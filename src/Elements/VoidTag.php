@@ -1,9 +1,9 @@
 <?php
 
-namespace Esayers\Html\Tags;
+namespace Esayers\Html\Elements;
 
 use Esayers\Html\Attribute;
-use Esayers\Html\Tags\AbstractTag;
+use Esayers\Html\Elements\AbstractTag;
 
 /**
  * Implements HTML tags that cannot have children
@@ -14,7 +14,7 @@ class VoidTag extends AbstractTag
      * Renders with trailing slash
      * @return string
      */
-    public function render(): string
+    public function renderString(): string
     {
         return '<' . $this->name . Attribute::renderAttributes($this->attributes) . '/>';
     }
