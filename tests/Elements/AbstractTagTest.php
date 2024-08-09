@@ -1,12 +1,13 @@
 <?php
 
-namespace Esayers\Html\Tests\Tags;
+namespace Esayers\Html\Tests\Elements;
 
-use Esayers\Html\Tags\AbstractTag;
+use Esayers\Html\Elements\AbstractTag;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 
+#[CoversClass('AbstractTag')]
 class AbstractTagTest extends TestCase
 {
     protected $stub;
@@ -14,7 +15,6 @@ class AbstractTagTest extends TestCase
     public function setUp(): void
     {
         $this->stub = $this->getMockBuilder(AbstractTag::class)
-                           ->onlyMethods(['render'])
                            ->setConstructorArgs(['div', ['id' => '2']])
                            ->getMock();
     }

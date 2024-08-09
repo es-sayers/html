@@ -1,13 +1,10 @@
 <?php
 
-namespace Esayers\Html\Tags;
+namespace Esayers\Html\Elements;
 
-use Esayers\Html\RenderableInterface;
+use Esayers\Html\AbstractRenderable;
 
-/**
- * Abstract class for HTML Tags
- */
-abstract class AbstractTag implements RenderableInterface
+abstract class AbstractTag extends AbstractRenderable
 {
     /**
      * HTML Tag Name
@@ -28,20 +25,13 @@ abstract class AbstractTag implements RenderableInterface
         $this->attributes  = $attributes;
     }
 
-    public function __toString(): string
-    {
-        return $this->render();
-    }
-
-    abstract public function render(): string;
-
     /**
      * Appends an attribute or overrides if already set
      * @param string $key Name of the attribute
      * @param mixed $value Value for the attribute
      * @return $this
      */
-    public function attribute(string $key, mixed $value): AbstractTag
+    final public function attribute(string $key, mixed $value): AbstractTag
     {
         $this->attributes = array_merge($this->attributes, [$key => $value]);
         return $this;
@@ -53,7 +43,7 @@ abstract class AbstractTag implements RenderableInterface
      * @param mixed $value Value for the attribute
      * @return $this
      */
-    public function attributes(array $attributes): AbstractTag
+    final public function attributes(array $attributes): AbstractTag
     {
         $this->attributes = array_merge($this->attributes, $attributes);
         return $this;
@@ -62,7 +52,7 @@ abstract class AbstractTag implements RenderableInterface
     /**
      * @return array
      */
-    public function getAttributes(): array
+    final public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -70,7 +60,7 @@ abstract class AbstractTag implements RenderableInterface
     /**
      * @return string
      */
-    public function getName(): string
+    final public function getName(): string
     {
         return $this->name;
     }
