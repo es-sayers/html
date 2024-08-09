@@ -2,9 +2,10 @@
 
 namespace Esayers\Html;
 
-use Esayers\Html\Tags\AbstractTag;
-use Esayers\Html\Tags\Tag;
-use Esayers\Html\Tags\VoidTag;
+use Esayers\Html\Elements\AbstractTag;
+use Esayers\Html\Elements\EncodedString;
+use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 
 /**
  * Static class that provides functions for creating HTML elements
@@ -42,9 +43,9 @@ class Html
     }
 
     /**
-     * Wraps argument passed as \Esayers\Html\RenderableInterface into an array
-     * @param \Esayers\Html\RenderableInterface|\Esayers\Html\RenderableInterface[] $arg
-     * @return \Esayers\Html\RenderableInterface[]
+     * Wraps argument passed as \Esayers\Html\AbstractRenderable into an array
+     * @param \Esayers\Html\AbstractRenderable|\Esayers\Html\AbstractRenderable[] $arg
+     * @return \Esayers\Html\AbstractRenderable[]
      */
     private static function getChildrenFromArgument(mixed $arg): array
     {
