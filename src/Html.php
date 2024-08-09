@@ -60,10 +60,10 @@ class Html
     /**
      * Creates a new \Esayers\Html\Text
      * @param string $textContent
-     * @return \Esayers\Html\Text
+     * @return \Esayers\Html\Elements\EncodedString
      */
-    public static function text(string $textContent): Text
+    public static function text(string $textContent): EncodedString
     {
-        return new Text($textContent);
+        return new EncodedString($textContent);
     }
 }
