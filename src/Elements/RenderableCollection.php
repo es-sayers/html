@@ -2,30 +2,29 @@
 
 namespace Esayers\Html\Elements;
 
-use Esayers\Html\AbstractRenderable;
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Traits\Renderable;
 use Esayers\Html\TypedCollection;
 
-class RenderableCollection extends AbstractRenderable
+/**
+ * Holds a collection of items that can be rendered
+ */
+class RenderableCollection extends TypedCollection
 {
-    /**
-     * @var TypedCollection
-     */
-    private TypedCollection $tags;
+    use Renderable;
 
     /**
-     * @param Tag[] $tags
+     * @param array $array
      */
-    public function __construct(array $tags = [])
+    public function __construct(array $array = [])
     {
-        $this->tags = new TypedCollection(Tag::class, $tags);
+        parent::__construct(Renderable::class, $array);
     }
 
     protected function renderString(): string
     {
         $renderString = '';
-        foreach ($this->tags as $tag) {
-            $renderString .= $tag->render();
+        foreach ($this->array as $item) {
+            $renderString .= $item->render();
         }
         return $renderString;
     }
