@@ -1,47 +1,18 @@
 # TODO
 
-`Tag`
-
-- Children:
-  - Adding
-    - [ ] Add at index
-    - [ ] Prepend
-    - [ ] Append
-    - [ ] Add All at index
-    - [ ] Prepend All
-    - [ ] Append All
-  - Removing
-    - [ ] Clear All
-    - [ ] Remove first
-    - [ ] Remove last
-    - [ ] Remove at index
-    - [ ] Remove by tag name
-  - Replacing
-    - [ ] Replace at index
-    - [ ] Replace First
-    - [ ] Replace Last
-    - [ ] Replace All
-  - Getting
-    - [ ] Get child at index
-    - [ ] Get children by tag name
-- Attributes
-  - [ ] Clear all
-  - [ ] Clear by name
-  - [ ] Add bool `override` argument to `Tag::attribute()` and `Tag::attributes()`
-    - `override` default = `true`
-    - If `override` = `true`, override existing attribute(s)
-    - If `override` = `false`, maintain original attributes
-
 `Text`
 - [ ] Add option to toggle html encoding
 
 `Attributes`
 - [ ] Add method for custom attribute
-  - [ ] Add static call to create attributes
-    - [ ] Encode attribute values
-    - [ ] Encode attribute names
-    - [ ] Add list of attributes
+  - [ ] Encode attribute values
+  - [ ] Encode attribute names
+  - [ ] Add list of attributes
 
+## Other
+- [ ] Add classes for elements that arent standard tags. Extend Tag or VoidTag if they can have children
+  - [ ] `Text` For rending text content
+  - [ ] `Container` For holding groups of siblings
 
 
 ## Planned

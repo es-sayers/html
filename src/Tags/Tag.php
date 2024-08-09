@@ -2,8 +2,8 @@
 
 namespace Esayers\Html\Tags;
 
-use Esayers\Html\RenderableInterface;
 use Esayers\Html\Attribute;
+use Esayers\Html\Collection;
 use Esayers\Html\Tags\AbstractTag;
 
 /**
@@ -12,10 +12,9 @@ use Esayers\Html\Tags\AbstractTag;
 class Tag extends AbstractTag
 {
     /**
-     * Children to be rendered inside of this tag
-     * @var \Esayers\Html\RenderableInterface[]
+     * @var \Esayers\Html\Collection Children to be rendered inside of this tag
      */
-    protected array $children;
+    protected Collection $children;
 
     /**
      * @param string $name HTML Tag name
@@ -24,8 +23,16 @@ class Tag extends AbstractTag
      */
     public function __construct(string $name, array $children = [], array $attributes = [])
     {
-        $this->children = $children;
+        $this->children = new Collection($children);
         parent::__construct($name, $attributes);
+    }
+
+    /**
+     * @return Collection $children
+     */
+    public function children(): Collection
+    {
+        return $this->children;
     }
 
     /**
@@ -40,35 +47,5 @@ class Tag extends AbstractTag
         }
         $str .= '</' . $this->name . '>';
         return $str;
-    }
-
-    /**
-     * Appends a child to the end of the children array
-     * @param \Esayers\Html\RenderableInterface $child
-     * @return $this
-     */
-    public function child(RenderableInterface $child): Tag
-    {
-        array_push($this->children, $child);
-        return $this;
-    }
-
-    /**
-     * Appends array of children to the end of the children array
-     * @param \Esayers\Html\RenderableInterface[] $children
-     * @return $this
-     */
-    public function children(array $children): Tag
-    {
-        $this->children = array_merge($this->children, $children);
-        return $this;
-    }
-
-    /**
-     * @return \Esayers\Html\RenderableInterface[] $children
-     */
-    public function getChildren(): array
-    {
-        return $this->children;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Esayers\Tests;
+namespace Esayers\Html\Tests;
 
 use Esayers\Html\Attribute;
 use PHPUnit\Framework\Attributes\CoversClass;
