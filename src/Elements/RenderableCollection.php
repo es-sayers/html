@@ -6,7 +6,7 @@ use Esayers\Html\AbstractRenderable;
 use Esayers\Html\Elements\Tag;
 use Esayers\Html\TypedCollection;
 
-class TagCollection extends AbstractRenderable
+class RenderableCollection extends AbstractRenderable
 {
     /**
      * @var TypedCollection
