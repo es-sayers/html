@@ -2,6 +2,7 @@
 
 namespace Esayers\Html\Traits\Attributes;
 
+use Esayers\Html\Elements\AbstractTag;
 use Esayers\Html\Elements\EncodedString;
 
 trait GlobalAttribute
@@ -40,7 +41,7 @@ trait GlobalAttribute
      * @param string|array|bool $value Attribute value
      * @return $this
      */
-    final protected function setAttribute(string $name, string|array|bool $value): mixed
+    final public function setAttribute(string $name, string|array|bool $value): AbstractTag
     {
         $this->attributes[$name] = $value;
         return $this;

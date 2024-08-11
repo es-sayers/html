@@ -2,10 +2,13 @@
 
 namespace Esayers\Html\Traits\Attributes;
 
+use Esayers\Html\Elements\AbstractTag;
+
 trait Title
 {
-    public function title(string|bool|array $value)
+    public function title(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('title', $value);
+        return $this;
     }
 }

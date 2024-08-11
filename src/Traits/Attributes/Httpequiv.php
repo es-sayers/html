@@ -2,10 +2,13 @@
 
 namespace Esayers\Html\Traits\Attributes;
 
+use Esayers\Html\Elements\AbstractTag;
+
 trait Httpequiv
 {
-    public function httpequiv(string|bool|array $value)
+    public function httpequiv(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('httpequiv', $value);
+        return $this;
     }
 }
