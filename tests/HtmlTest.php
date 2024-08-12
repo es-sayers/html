@@ -2,8 +2,9 @@
 
 namespace Esayers\Html\Tests;
 
+use Esayers\Html\Elements\EncodedString;
+use Esayers\Html\Elements\Tag;
 use Esayers\Html\Html;
-use Esayers\Html\Elements\VoidTag;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -13,60 +14,57 @@ use PHPUnit\Framework\TestCase;
 class HtmlTest extends TestCase
 {
     #[Test]
-    public function testCreateTag()
-    {
-        $tag = Html::div();
-        $this->assertEquals('div', $tag->getName());
+    public function testText() {
+        $text = Html::text('text>');
+        $this->assertEquals('text&gt;', $text->render());
     }
 
-    #[Test]
-    public function testCreateTagDoesntExist()
-    {
-        $tag = Html::thisHtmlTagDoesntExist();
-        $this->assertEquals(null, $tag);
+    #[DataProvider('dataVoidTagNames')]
+    #[DataProvider('dataTagNames')]
+    public function testCreateOptionalParameters(string $tagName) {
+        $tag = Html::$tagName();
+        $this->assertEquals($tagName, $tag->getName());
     }
 
-    #[Test]
-    public function testCreateTagWithSingleChild()
-    {
-        $child = Html::p();
-        $tag = Html::div($child);
+    #[DataProvider('dataTagNames')]
+    public function testCreateTagWithStringChild(string $tagName) {
+        $tag = Html::$tagName('text>');
+        $children = $tag->getChildren();
+        $this->assertEquals('text&gt;', $children[0]->render());
+    }
+
+    #[DataProvider('dataTagNames')]
+    public function testCreateTagWithRenderableChild(string $tagName) {
+        $child = new Tag('p');
+        $tag = Html::$tagName($child);
         $this->assertEquals([$child], $tag->getChildren());
     }
 
-    #[Test]
-    public function testCreateTagWithChildrenArray()
+
+    #[DataProvider('dataVoidTagNames')]
+    public function testCreateVoidTag(string $tagName)
     {
-        $child1 = Html::p();
-        $child2 = Html::span();
-        $tag = Html::div([$child1, $child2]);
-        $this->assertEquals([$child1, $child2], $tag->getChildren());
+        $attributes = ['id' => '1'];
+        $tag = Html::$tagName($attributes);
+        $this->assertEquals($tagName, $tag->getName());
+        $this->assertEquals($attributes, $tag->getAttributes());
     }
 
-    #[Test]
-    public function testCreateTagWithAttributes()
+
+    #[DataProvider('dataTagNames')]
+    public function testCreateTag(string $tagName)
     {
-        $tag = Html::div([], ['color' => 'red']);
-        $this->assertEquals('<div color="red"></div>', $tag->render());
+        $children = [new Tag('p')];
+        $attributes = ['id' => '1'];
+        $tag = Html::$tagName($children, $attributes);
+        $this->assertEquals($tagName, $tag->getName());
+        $this->assertEquals($attributes, $tag->getAttributes());
+        $this->assertEquals($children, $tag->getChildren());
     }
 
-    #[Test]
-    public function testCreateVoidTagWithAttributes()
-    {
-        $tag = Html::br(['color' => 'red']);
-        $this->assertEquals('<br color="red"/>', $tag->render());
-    }
-
-    #[DataProvider('voidTagProvider')]
-    public function testVoidTag($tag)
-    {
-        $br = Html::$tag();
-        $this->assertInstanceOf(VoidTag::class, $br);
-    }
-
-    public static function voidTagProvider()
-    {
-        return [
+    public static function dataVoidTagNames():array {
+        return 
+        [
             ['area'],
             ['base'],
             ['br'],
@@ -81,6 +79,111 @@ class HtmlTest extends TestCase
             ['source'],
             ['track'],
             ['wbr']
+        ];
+    }
+
+    public static function dataTagNames():array {
+        return 
+        [
+            ['a'],
+            ['abbr'],
+            ['address'],
+            ['article'],
+            ['aside'],
+            ['audio'],
+            ['b'],
+            ['bdi'],
+            ['bdo'],
+            ['blockquote'],
+            ['body'],
+            ['button'],
+            ['canvas'],
+            ['caption'],
+            ['cite'],
+            ['code'],
+            ['colgroup'],
+            ['data'],
+            ['datalist'],
+            ['dd'],
+            ['del'],
+            ['details'],
+            ['dfn'],
+            ['dialog'],
+            ['div'],
+            ['dl'],
+            ['dt'],
+            ['em'],
+            ['fieldset'],
+            ['figcaption'],
+            ['figure'],
+            ['footer'],
+            ['form'],
+            ['h1'],
+            ['h2'],
+            ['h3'],
+            ['h4'],
+            ['h5'],
+            ['h6'],
+            ['head'],
+            ['header'],
+            ['hgroup'],
+            ['html'],
+            ['i'],
+            ['iframe'],
+            ['ins'],
+            ['kbd'],
+            ['label'],
+            ['legend'],
+            ['li'],
+            ['main'],
+            ['map'],
+            ['mark'],
+            ['menu'],
+            ['meter'],
+            ['nav'],
+            ['noscript'],
+            ['ol'],
+            ['optgroup'],
+            ['option'],
+            ['output'],
+            ['p'],
+            ['picture'],
+            ['pre'],
+            ['progress'],
+            ['q'],
+            ['rp'],
+            ['rt'],
+            ['ruby'],
+            ['s'],
+            ['samp'],
+            ['script'],
+            ['search'],
+            ['section'],
+            ['select'],
+            ['small'],
+            ['span'],
+            ['strike'],
+            ['strong'],
+            ['style'],
+            ['sub'],
+            ['summary'],
+            ['sup'],
+            ['svg'],
+            ['table'],
+            ['tbody'],
+            ['td'],
+            ['template'],
+            ['textarea'],
+            ['tfoot'],
+            ['th'],
+            ['thead'],
+            ['time'],
+            ['title'],
+            ['tr'],
+            ['u'],
+            ['ul'],
+            ['var'],
+            ['video'],
         ];
     }
 }
