@@ -28,7 +28,11 @@ class Video extends Tag
     use Src;
     use Width;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('video', $children, $attributes);
     }

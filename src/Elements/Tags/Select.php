@@ -24,7 +24,11 @@ class Select extends Tag
     use Required;
     use Size;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('select', $children, $attributes);
     }

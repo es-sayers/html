@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Min
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function min(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('min', $value);

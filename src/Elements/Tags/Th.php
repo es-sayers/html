@@ -20,7 +20,11 @@ class Th extends Tag
     use Rowspan;
     use Scope;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('th', $children, $attributes);
     }

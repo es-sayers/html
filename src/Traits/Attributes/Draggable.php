@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Draggable
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function draggable(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('draggable', $value);

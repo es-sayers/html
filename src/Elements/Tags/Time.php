@@ -12,7 +12,11 @@ class Time extends Tag
 {
     use Datetime;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('time', $children, $attributes);
     }

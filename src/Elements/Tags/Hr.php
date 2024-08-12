@@ -9,7 +9,10 @@ use Esayers\Html\Elements\VoidTag;
  */
 class Hr extends VoidTag
 {
-    public function __construct(array $attributes)
+    /**
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
     {
         parent::__construct('hr', $attributes);
     }

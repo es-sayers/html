@@ -18,7 +18,11 @@ class Option extends Tag
     use Selected;
     use Value;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('option', $children, $attributes);
     }

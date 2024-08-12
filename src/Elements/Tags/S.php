@@ -9,7 +9,11 @@ use Esayers\Html\Elements\Tag;
  */
 class S extends Tag
 {
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('s', $children, $attributes);
     }

@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Headers
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function headers(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('headers', $value);

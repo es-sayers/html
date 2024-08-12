@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Controls
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function controls(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('controls', $value);

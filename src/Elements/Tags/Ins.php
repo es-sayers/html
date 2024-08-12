@@ -14,7 +14,11 @@ class Ins extends Tag
     use Cite;
     use Datetime;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('ins', $children, $attributes);
     }

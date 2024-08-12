@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Hidden
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function hidden(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('hidden', $value);

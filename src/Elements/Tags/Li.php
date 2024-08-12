@@ -12,7 +12,11 @@ class Li extends Tag
 {
     use Value;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('li', $children, $attributes);
     }

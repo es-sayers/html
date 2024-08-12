@@ -26,7 +26,11 @@ class Link extends Tag
     use Title;
     use Type;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('link', $children, $attributes);
     }

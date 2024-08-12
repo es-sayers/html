@@ -14,7 +14,11 @@ class Style extends Tag
     use Media;
     use Type;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('style', $children, $attributes);
     }

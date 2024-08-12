@@ -6,6 +6,11 @@ use Esayers\Html\Elements\AbstractTag;
 
 trait Reversed
 {
+    /**
+     * HTML Attribute
+     * @param string|bool|array $value
+     * @return $this
+     */
     public function reversed(string|bool|array $value): AbstractTag
     {
         $this->setAttribute('reversed', $value);

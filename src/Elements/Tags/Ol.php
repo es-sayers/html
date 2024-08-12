@@ -16,7 +16,11 @@ class Ol extends Tag
     use Start;
     use Type;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('ol', $children, $attributes);
     }

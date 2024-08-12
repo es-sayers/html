@@ -76,7 +76,11 @@ class Input extends Tag
     use Value;
     use Width;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('input', $children, $attributes);
     }

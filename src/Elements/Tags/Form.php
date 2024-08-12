@@ -27,7 +27,11 @@ class Form extends Tag
     use Rel;
     use Target;
 
-    public function __construct(array $children, array $attributes)
+    /**
+     * @param array $children
+     * @param array $attributes
+     */
+    public function __construct(array $children = [], array $attributes = [])
     {
         parent::__construct('form', $children, $attributes);
     }
