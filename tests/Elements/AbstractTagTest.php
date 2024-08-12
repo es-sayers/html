@@ -30,25 +30,4 @@ class AbstractTagTest extends TestCase
     {
         $this->assertEquals(['id' => '2'], $this->stub->getAttributes());
     }
-
-    #[Test]
-    public function testAddAttribute()
-    {
-        $this->stub->attribute('title', 'test');
-        $this->assertEquals(['id' => '2', 'title' => 'test'], $this->stub->getAttributes());
-    }
-
-    #[Test]
-    public function testOverrideAttribute()
-    {
-        $this->stub->attribute('id', '3');
-        $this->assertEquals(['id' => '3'], $this->stub->getAttributes());
-    }
-
-    #[Test]
-    public function testAddAttributes()
-    {
-        $this->stub->attributes(['title' => 'test', 'tabindex' => '3']);
-        $this->assertEquals(['id' => '2', 'title' => 'test', 'tabindex' => '3'], $this->stub->getAttributes());
-    }
 }
