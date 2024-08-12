@@ -16,6 +16,6 @@ class VoidTag extends AbstractTag
      */
     public function renderString(): string
     {
-        return '<' . $this->name . Attribute::renderAttributes($this->attributes) . '/>';
+        return '<' . $this->name . $this->renderAttributes() . '/>';
     }
 }
