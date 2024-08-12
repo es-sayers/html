@@ -2,19 +2,18 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 
 /**
  * Class for <embed> tag
  */
-class Embed extends Tag
+class Embed extends VoidTag
 {
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('embed', $children, $attributes);
+        parent::__construct('embed', $attributes);
     }
 }

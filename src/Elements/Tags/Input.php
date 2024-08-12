@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Accept;
 use Esayers\Html\Traits\Attributes\Alt;
 use Esayers\Html\Traits\Attributes\Autocomplete;
@@ -40,7 +40,7 @@ use Esayers\Html\Traits\Attributes\Width;
 /**
  * Class for <input> tag
  */
-class Input extends Tag
+class Input extends VoidTag
 {
     use Accept;
     use Alt;
@@ -77,11 +77,10 @@ class Input extends Tag
     use Width;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('input', $children, $attributes);
+        parent::__construct('input', $attributes);
     }
 }

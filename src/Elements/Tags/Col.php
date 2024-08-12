@@ -2,22 +2,21 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Span;
 
 /**
  * Class for <col> HTML tag
  */
-class Col extends Tag
+class Col extends VoidTag
 {
     use Span;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('col', $children, $attributes);
+        parent::__construct('col', $attributes);
     }
 }

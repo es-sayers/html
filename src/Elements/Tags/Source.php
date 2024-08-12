@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Media;
 use Esayers\Html\Traits\Attributes\Sizes;
 use Esayers\Html\Traits\Attributes\Src;
@@ -12,7 +12,7 @@ use Esayers\Html\Traits\Attributes\Type;
 /**
  * Class for <source> tag
  */
-class Source extends Tag
+class Source extends VoidTag
 {
     use Media;
     use Sizes;
@@ -21,11 +21,10 @@ class Source extends Tag
     use Type;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('source', $children, $attributes);
+        parent::__construct('source', $attributes);
     }
 }

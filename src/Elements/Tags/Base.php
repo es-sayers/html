@@ -2,24 +2,23 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Href;
 use Esayers\Html\Traits\Attributes\Target;
 
 /**
  * Class for <base> HTML tag
  */
-class Base extends Tag
+class Base extends VoidTag
 {
     use Href;
     use Target;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('base', $children, $attributes);
+        parent::__construct('base', $attributes);
     }
 }

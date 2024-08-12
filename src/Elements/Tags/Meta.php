@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Charset;
 use Esayers\Html\Traits\Attributes\Content;
 use Esayers\Html\Traits\Attributes\Httpequiv;
@@ -11,7 +11,7 @@ use Esayers\Html\Traits\Attributes\Name;
 /**
  * Class for <meta> tag
  */
-class Meta extends Tag
+class Meta extends VoidTag
 {
     use Charset;
     use Content;
@@ -19,11 +19,10 @@ class Meta extends Tag
     use Name;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('meta', $children, $attributes);
+        parent::__construct('meta', $attributes);
     }
 }

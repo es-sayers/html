@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Href;
 use Esayers\Html\Traits\Attributes\Hreflang;
 use Esayers\Html\Traits\Attributes\Media;
@@ -15,7 +15,7 @@ use Esayers\Html\Traits\Attributes\Type;
 /**
  * Class for <link> tag
  */
-class Link extends Tag
+class Link extends VoidTag
 {
     use Href;
     use Hreflang;
@@ -27,11 +27,10 @@ class Link extends Tag
     use Type;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('link', $children, $attributes);
+        parent::__construct('link', $attributes);
     }
 }

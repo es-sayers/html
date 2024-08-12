@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Alt;
 use Esayers\Html\Traits\Attributes\Coords;
 use Esayers\Html\Traits\Attributes\Download;
@@ -18,7 +18,7 @@ use Esayers\Html\Traits\Attributes\Type;
 /**
  * Class for <area> HTML tag
  */
-class Area extends Tag
+class Area extends VoidTag
 {
     use Alt;
     use Coords;
@@ -33,11 +33,10 @@ class Area extends Tag
     use Type;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('area', $children, $attributes);
+        parent::__construct('area', $attributes);
     }
 }

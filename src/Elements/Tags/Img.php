@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Alt;
 use Esayers\Html\Traits\Attributes\Height;
 use Esayers\Html\Traits\Attributes\Ismap;
@@ -18,7 +18,7 @@ use Esayers\Html\Traits\Attributes\Width;
 /**
  * Class for <img> tag
  */
-class Img extends Tag
+class Img extends VoidTag
 {
     use Alt;
     use Height;
@@ -33,11 +33,10 @@ class Img extends Tag
     use Width;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('img', $children, $attributes);
+        parent::__construct('img', $attributes);
     }
 }

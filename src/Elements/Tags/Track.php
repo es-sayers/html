@@ -2,7 +2,7 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\DefaultAttribute;
 use Esayers\Html\Traits\Attributes\Kind;
 use Esayers\Html\Traits\Attributes\Label;
@@ -12,7 +12,7 @@ use Esayers\Html\Traits\Attributes\Srclang;
 /**
  * Class for <track> tag
  */
-class Track extends Tag
+class Track extends VoidTag
 {
     use DefaultAttribute;
     use Kind;
@@ -21,11 +21,10 @@ class Track extends Tag
     use Srclang;
 
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('track', $children, $attributes);
+        parent::__construct('track', $attributes);
     }
 }

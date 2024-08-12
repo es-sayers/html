@@ -2,19 +2,18 @@
 
 namespace Esayers\Html\Elements\Tags;
 
-use Esayers\Html\Elements\Tag;
+use Esayers\Html\Elements\VoidTag;
 
 /**
  * Class for <wbr> tag
  */
-class Wbr extends Tag
+class Wbr extends VoidTag
 {
     /**
-     * @param array $children
      * @param array $attributes
      */
-    public function __construct(array $children = [], array $attributes = [])
+    public function __construct(array $attributes = [])
     {
-        parent::__construct('wbr', $children, $attributes);
+        parent::__construct('wbr', $attributes);
     }
 }
