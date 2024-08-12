@@ -14,7 +14,7 @@ class TagTest extends TestCase
     public function testConstructAndGet()
     {
         $tag = new Tag('div');
-        $this->assertEquals([], $tag->children()->toArray());
+        $this->assertEquals([], $tag->getChildren());
     }
 
     #[Test]
@@ -23,7 +23,36 @@ class TagTest extends TestCase
         $child = new Tag('p');
         $tag = new Tag('div', [$child]);
 
-        $this->assertEquals([$child], $tag->children()->toArray());
+        $this->assertEquals([$child], $tag->getChildren());
+    }
+
+    #[Test]
+    public function testChild() {
+        $child = new Tag('p');
+        $tag = new Tag('div');
+        $tag->child($child);
+
+        $this->assertEquals([$child], $tag->getChildren());
+    }
+
+    #[Test]
+    public function testChildren() {
+        $child1 = new Tag('p');
+        $child2 = new Tag('h1');
+        $tag = new Tag('div');
+        $tag->children([$child1, $child2]);
+
+        $this->assertEquals([$child1, $child2], $tag->getChildren());
+    }
+
+    #[Test]
+    public function testClearChildren() {
+        $child = new Tag('p');
+        $tag = new Tag('div');
+        $tag->child($child);
+        $tag->clearChildren();
+
+        $this->assertEquals([], $tag->getChildren());
     }
 
     #[Test]

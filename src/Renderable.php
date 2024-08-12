@@ -1,10 +1,10 @@
 <?php
 
-namespace Esayers\Html\Traits;
+namespace Esayers\Html;
 
 use ValueError;
 
-trait Renderable
+abstract class Renderable
 {
     /**
      * Returns string to be rendered

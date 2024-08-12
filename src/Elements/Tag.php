@@ -2,8 +2,8 @@
 
 namespace Esayers\Html\Elements;
 
+use Esayers\Html\Helpers\Arr;
 use Esayers\Html\Attribute;
-use Esayers\Html\Elements\RenderableCollection;
 use Esayers\Html\Elements\AbstractTag;
 
 /**
@@ -12,27 +12,50 @@ use Esayers\Html\Elements\AbstractTag;
 class Tag extends AbstractTag
 {
     /**
-     * @var \Esayers\Html\Elements\RenderableCollection Children to be rendered inside of this tag
+     * @var array Children to be rendered inside of this tag
      */
-    protected RenderableCollection $children;
+    protected array $children;
 
     /**
      * @param string $name HTML Tag name
-     * @param \Esayers\Html\Traits\Renderable[] $children (optional)
+     * @param \Esayers\Html\Renderable[] $children (optional)
      * @param array $attributes (optional) HTML attributes
      */
     public function __construct(string $name, array $children = [], array $attributes = [])
     {
-        $this->children = new RenderableCollection($children);
+        $this->children = $children;
         parent::__construct($name, $attributes);
     }
 
     /**
-     * @return \Esayers\Html\Elements\RenderableCollection $children
+     * @return array
      */
-    public function children(): RenderableCollection
+    public function getChildren(): array
     {
         return $this->children;
+    }
+
+    /**
+     * @return void
+     */
+    public function clearChildren() : void {
+        $this->children = [];
+    }
+
+    /**
+     * @param \Esayers\Html\Renderable $child
+     * @return void
+     */
+    public function child(mixed $child) : void{
+        Arr::append($this->children, $child);
+    }
+
+    /**
+     * @param \Esayers\Html\Renderable[] $child
+     * @return void
+     */
+    public function children(array $children) : void{
+        Arr::appendAll($this->children, $children);
     }
 
     /**

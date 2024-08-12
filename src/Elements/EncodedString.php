@@ -2,12 +2,10 @@
 
 namespace Esayers\Html\Elements;
 
-use Esayers\Html\Traits\EncodedRenderable;
+use Esayers\Html\EncodedRenderable;
 
-class EncodedString
+class EncodedString extends EncodedRenderable
 {
-    use EncodedRenderable;
-
     /**
      * Raw text to render
      * @var string

@@ -3,12 +3,11 @@
 namespace Esayers\Html\Elements;
 
 use Esayers\Html\Traits\Attributes\GlobalAttribute;
-use Esayers\Html\Traits\Renderable;
+use Esayers\Html\Renderable;
 
-abstract class AbstractTag
+abstract class AbstractTag extends Renderable
 {
     use GlobalAttribute;
-    use Renderable;
 
     /**
      * HTML Tag Name
