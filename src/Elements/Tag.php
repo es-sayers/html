@@ -64,7 +64,7 @@ class Tag extends AbstractTag
      */
     public function renderString(): string
     {
-        $str = '<' . $this->name . Attribute::renderAttributes($this->attributes) .  '>';
+        $str = '<' . $this->name . $this->renderAttributes() .  '>';
         foreach ($this->children as $child) {
             $str .= $child->render();
         }

@@ -70,6 +70,7 @@ use Esayers\Html\Elements\Tags\Meta;
 use Esayers\Html\Elements\Tags\Meter;
 use Esayers\Html\Elements\Tags\Nav;
 use Esayers\Html\Elements\Tags\Noscript;
+use Esayers\Html\Elements\Tags\ObjectTag;
 use Esayers\Html\Elements\Tags\Ol;
 use Esayers\Html\Elements\Tags\Optgroup;
 use Esayers\Html\Elements\Tags\Option;
@@ -837,6 +838,17 @@ class Html
     public static function noscript(array|Renderable|string $children = [], array $attributes = []) : Noscript {
         $children = self::convertToChildArray($children);
         return new Noscript($children, $attributes);
+    }
+
+    /**
+     * Create new HTML tag: object
+     * @param array|\Esayers\Html\Renderable|string $children
+     * @param array $attributes
+     * @return \Esayers\Html\Elements\Tags\ObjectTag
+     */
+    public static function object(array|Renderable|string $children = [], array $attributes = []) : ObjectTag {
+        $children = self::convertToChildArray($children);
+        return new ObjectTag($children, $attributes);
     }
     
     /**

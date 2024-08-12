@@ -2,7 +2,6 @@
 
 namespace Esayers\Html\Tests;
 
-use Esayers\Html\Elements\EncodedString;
 use Esayers\Html\Elements\Tag;
 use Esayers\Html\Html;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -146,6 +145,7 @@ class HtmlTest extends TestCase
             ['optgroup'],
             ['option'],
             ['output'],
+            ['object'],
             ['p'],
             ['picture'],
             ['pre'],

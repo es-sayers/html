@@ -13,7 +13,7 @@ trait Httpequiv
      */
     public function httpequiv(string|bool|array $value): AbstractTag
     {
-        $this->setAttribute('httpequiv', $value);
+        $this->setAttribute('http-equiv', $value);
         return $this;
     }
 }
