@@ -55,7 +55,7 @@ trait GlobalAttribute
             throw new ValueError('Attribute name must not be empty.');
         }
 
-        if(preg_match('/&"\'\<\/=/', $name) == 1) {
+        if(preg_match('/[&"\'\<\/=]/', $name) == 1) {
             throw new ValueError('Attribute name must not contain any SPACE & " \' < / =');
         }
 

@@ -306,6 +306,12 @@ class AttributeTest extends TestCase {
         [
             [''],
             [' '],
+            ['&'],
+            ['"'],
+            ["'"],
+            ['<'],
+            ['/'],
+            ['='],
         ];
     }
 
