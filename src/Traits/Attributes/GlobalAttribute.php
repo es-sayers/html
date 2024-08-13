@@ -115,6 +115,10 @@ trait GlobalAttribute
             }
         }
 
+        if($value == '') {
+            return ' ' . $name;
+        }
+        
         return ' ' . $name . '="' . $value . '"';
     }
 
