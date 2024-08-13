@@ -10,6 +10,7 @@ trait GlobalAttribute
 {
     use Dir;
     use ClassAttribute;
+    use CustomData;
     use Accesskey;
     use ForAttribute;
     use Lang;

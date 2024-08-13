@@ -4,7 +4,7 @@
   - [x] Encode rendering
   - [ ] Attribute data types
   - [x] accept-charset
-  - [ ] data-*
+  - [x] data-*
   - [x] style
 - [x] Convert Html::__callStatic() to functions for each tag
 - [x] Update README
