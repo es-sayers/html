@@ -268,6 +268,10 @@ class AttributeTest extends TestCase {
                     '',
                     []
                 ],
+                'empty value' => [
+                    ' checked',
+                    ['checked' => '']
+                ],
                 'encode value' => [
                     ' name="&gt;"',
                     ['name' => '>']
