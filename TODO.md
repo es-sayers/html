@@ -7,7 +7,7 @@
   - [ ] data-*
   - [ ] style
 - [x] Convert Html::__callStatic() to functions for each tag
-- [ ] Update README
+- [x] Update README
 - [x] Create classes for vanilla tags
 - [ ] Create premade components
   - [ ] Table
