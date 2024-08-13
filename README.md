@@ -6,87 +6,70 @@
 Basic example
 ```php
 echo Html::div(
-        Html::p(
-            Html::text('Example text'),
-            ['color' => 'blue']
-        ),
-        ['class' => ['class1', 'class2']]
-    );
+    Html::p('Example Text', ['class' => 'stylish'])
+);
 ```
 Output:
 ```html
-<div class="class1 class2"><p color="blue">Example text</p></div>
+<div><p class="stylish">Example Text</p></div>
 ```
 
 ## ```Html```
 Create HTML tags using the static Html class. 
  ```php
-    echo Html::p()->render(); 
-    # Output: <p></p>
+echo Html::p('Paragraph text'); 
+ ```
+ Output:
+ ```html
+ <p>Paragraph text</p>
  ```
  Nesting tags
  ```php
-    echo Html::div(Html::p())->render(); 
-    # Output: <div><p></p></div>
-
-    echo Html::div([
-        Html::p(),
-        Html::table()
-    ])->render(); 
-    # Output: <div><p></p><table></table></div>
+echo Html::div(
+    Html::section([
+            Html::h2('Heading'),
+            Html::p('Amazing paragraph')
+        ]
+    )
+);
+ ```
+ Output:
+ ```html
+<div><section><h2>Heading</h2><p>paragraph</p></section></div>
  ```
  Adding attributes
  ```php
-    echo Html::div([], ['class' => 'class1']); 
-    # Output: <div class="class1"></div>
-
-    echo Html::div([], ['color' => 'red', 'class' => ['class1', 'class2']]);
-    # Output: <div color="red" class="class1 class2"></div>
+echo Html::div()
+    ->id("2")
+    ->class(['class1', 'class2']);
  ```
-Encode strings for output
+ Output:
+ ```html
+<div id="2" class="class1 class2"></div>
+ ```
+ Tag-specific attributes:
  ```php
-    echo Html::p(
-        Html::text('3 > 2 = TRUE')
-    );
-    # Output: <p>3 &gt; 2 = TRUE</p>
- ```
-
-## ```Tag```
-```Tag``` and ```VoidTag``` objects can be created through the static ```Html``` class
-
+ echo Html::input()
+        ->type("checkbox")
+        ->checked(true);
+```
+Output:
+```html
+<input type="checkbox" checked/>
+```
+## Content automatically encoded
 ```php
-    $tag = Html::p();
-    echo $tag->render();
-    # Output: <p></p>
-
-    $voidTag = Html::br();
-    echo $voidTag->render();
-    # Output: <br/>
+echo Html::div('> <')
+        ->id(">")
+        ->class(['clas"s1', 'class2']);
+```
+Output:
+```html
+<div id="&gt;" class="clas&quot;s1 class2">&gt; &lt;</div>
 ```
 
-Adding children and attributes
-```php
-    $array = [1, 2, 3];
+## Supported Tags
+`a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`, `base`, `bdi`, `bdo`, `blockquote`, `body`, `br`, `button`, `canvas`, `caption`, `cite`, `code`, `col`, `colgroup`, `data`, `datalist`, `dd`, `del`, `details`, `dfn`, `dialog`, `div`, `dl`, `dt`, `em`, `embed`, `fieldset`, `figcaption`, `figure`, `footer`, `form`, `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `head`, `header`, `hgroup`, `hr`, `html`, `i`, `iframe`, `img`, `input`, `ins`, `kbd`, `label`, `legend`, `li`, `link`, `main`, `map`, `mark`, `menu`, `meta`, `meter`, `nav`, `noscript`, `objecttag`, `ol`, `optgroup`, `option`, `output`, `p`, `param`, `picture`, `pre`, `progress`, `q`, `rp`, `rt`, `ruby`, `s`, `samp`, `script`, `search`, `section`, `select`, `small`, `source`, `span`, `strike`, `strong`, `style`, `sub`, `summary`, `sup`, `svg`, `table`, `tbody`, `td`, `template`, `textarea`, `tfoot`, `th`, `thead`, `time`, `title`, `tr`, `track`, `u`, `ul`, `vartag`, `video`, `wbr`
 
-    $tag = Html::tr();
-    $tag->attribute('class', ['highlight', 'large-text']);
-    foreach ($array as $value) {
-        $tag->child(Html::td(Html::text($value)));
-    }
-    echo $tag->render();
-    # Output: <tr class="highlight large-text"><td>1</td><td>2</td><td>3</td></tr>
-```
-
-Method Chaining
-```php
-    $tag = Html::div();
-    $tag
-        ->attribute('color', 'green')
-        ->children([
-            Html::p(),
-            Html::section()
-        ]);
-    echo $tag;
-    # Outputs: <div color="green"><p></p><section></section></div>
-```
-
+## Supported Attributes
+`accept`, `accesskey`, `action`, `align`, `alt`, `async`, `autocomplete`, `autofocus`, `autoplay`, `bgcolor`, `border`, `charset`, `checked`, `cite`, `classattribute`, `color`, `cols`, `colspan`, `content`, `contenteditable`, `controls`, `coords`, `data`, `datetime`, `defaultattribute`, `defer`, `dir`, `dirname`, `disabled`, `download`, `draggable`, `enctype`, `enterkeyhint`, `forattribute`, `form`, `formaction`, `headers`, `height`, `hidden`, `high`, `href`, `hreflang`, `httpequiv`, `id`, `inert`, `inputmode`, `ismap`, `kind`, `label`, `lang`, `listattribute`, `loop`, `low`, `max`, `maxlength`, `media`, `method`, `min`, `multiple`, `muted`, `name`, `novalidate`, `open`, `optimum`, `pattern`, `ping`, `placeholder`, `popover`, `popovertarget`, `popovertargetaction`, `poster`, `preload`, `readonlyattribute`, `rel`, `required`, `reversed`, `rows`, `rowspan`, `sandbox`, `scope`, `selected`, `shape`, `size`, `sizes`, `span`, `spellcheck`, `src`, `srcdoc`, `srclang`, `srcset`, `start`, `step`, `style`, `tabindex`, `target`, `title`, `translate`, `type`, `usemap`, `value`, `width`, `wrap`,
