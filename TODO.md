@@ -5,7 +5,7 @@
   - [ ] Attribute data types
   - [x] accept-charset
   - [ ] data-*
-  - [ ] style
+  - [x] style
 - [x] Convert Html::__callStatic() to functions for each tag
 - [x] Update README
 - [x] Create classes for vanilla tags

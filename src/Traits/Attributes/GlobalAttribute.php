@@ -104,6 +104,14 @@ trait GlobalAttribute
             if(in_array($name, array_keys(self::LIST_ATTRIBUTES))) {
                 return ' ' . $name . '="' . implode(self::LIST_ATTRIBUTES[$name], $value) . '"';
             }
+
+            if($name == 'style') {
+                $styles = '';
+                foreach($value as $styleName => $styleValue) {
+                    $styles .= $styleName . ":" . $styleValue . ';';
+                }
+                return ' ' . $name . '="' . $styles . '"';
+            }
         }
 
         return ' ' . $name . '="' . $value . '"';

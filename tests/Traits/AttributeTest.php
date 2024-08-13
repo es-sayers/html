@@ -235,6 +235,18 @@ class AttributeTest extends TestCase {
         };
     }
 
+    #[Test]
+    public function testStyleAttribute() {
+        $this->tag->style('color:red;height:100px;');
+        $this->assertEquals(' style="color:red;height:100px;"', $this->tag->renderAttributeTest());
+    }
+
+    #[Test]
+    public function testStyleAttributeArray() {
+        $this->tag->style(['color' => 'red', 'height' => '100px']);
+        $this->assertEquals(' style="color:red;height:100px;"', $this->tag->renderAttributeTest());
+    }
+
     #[DataProvider('dataRenderAttributes')]
     public function testRenderAttributes(string $expected, array $attributes) {
         foreach ($attributes as $name => $value) {
