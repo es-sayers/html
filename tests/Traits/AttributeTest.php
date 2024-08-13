@@ -247,6 +247,12 @@ class AttributeTest extends TestCase {
         $this->assertEquals(' style="color:red;height:100px;"', $this->tag->renderAttributeTest());
     }
 
+    #[Test]
+    public function testCustomDataAttribute() {
+        $this->tag->customData('field', '2');
+        $this->assertEquals(' data-field="2"', $this->tag->renderAttributeTest());
+    }
+
     #[DataProvider('dataRenderAttributes')]
     public function testRenderAttributes(string $expected, array $attributes) {
         foreach ($attributes as $name => $value) {
