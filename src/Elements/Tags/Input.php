@@ -4,6 +4,7 @@ namespace Esayers\Html\Elements\Tags;
 
 use Esayers\Html\Elements\VoidTag;
 use Esayers\Html\Traits\Attributes\Accept;
+use Esayers\Html\Traits\Attributes\Acceptcharset;
 use Esayers\Html\Traits\Attributes\Alt;
 use Esayers\Html\Traits\Attributes\Autocomplete;
 use Esayers\Html\Traits\Attributes\Autofocus;
@@ -43,6 +44,7 @@ use Esayers\Html\Traits\Attributes\Width;
 class Input extends VoidTag
 {
     use Accept;
+    use Acceptcharset;
     use Alt;
     use Autocomplete;
     use Autofocus;

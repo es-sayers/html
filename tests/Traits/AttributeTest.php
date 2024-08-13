@@ -6,6 +6,7 @@ use Esayers\Html\Traits\Attributes\Ping;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Esayers\Html\Traits\Attributes\Accept;
+use Esayers\Html\Traits\Attributes\Acceptcharset;
 use Esayers\Html\Traits\Attributes\Accesskey;
 use Esayers\Html\Traits\Attributes\Action;
 use Esayers\Html\Traits\Attributes\Align;
@@ -129,6 +130,7 @@ class AttributeTest extends TestCase {
             }
             # use GlobalAttribute; inferred from Tag
             use Accept;
+            use Acceptcharset;
             use Accesskey;
             use Action;
             use Align;
@@ -328,6 +330,7 @@ class AttributeTest extends TestCase {
         return
             [
                 ['accept'],
+                ['acceptcharset', 'accept-charset'],
                 ['accesskey'],
                 ['action'],
                 ['align'],
